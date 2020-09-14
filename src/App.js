@@ -1,17 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Year } from './components';
+
 import './App.css';
-import HelloApp from  './components/hello.component';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-
-        <HelloApp></HelloApp>
-
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  render() {
+    return (      
+      <Year/>          
+    )
+  }
 }
-
-export default App;

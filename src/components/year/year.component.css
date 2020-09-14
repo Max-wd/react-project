@@ -1,0 +1,45 @@
+.year {
+  color: #2f5687;;
+  font-size: 100px;
+  font-weight: bold;
+  width: 500px;
+  text-align: center;  
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.months {  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+button {
+  outline: none;
+  border: 2px solid transparent;
+  font-size: 60px;
+  text-align: center;  
+  background-color: transparent;
+  color: orangered;
+  cursor: pointer;   
+  position: absolute;
+}
+
+button:hover {
+  border: 2px solid orangered;
+  border-radius: 20%;
+}
+
+.btn-left {
+  top: 30px;
+  left: 0;  
+}
+
+.btn-right {  
+  top: 30px;
+  right: 0;  
+}
