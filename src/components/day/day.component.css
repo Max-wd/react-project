@@ -1,0 +1,43 @@
+.day {
+  width: calc(100% / 7);
+  text-align: center;
+  font-size: 28px;
+}
+
+.day:nth-child(7n),
+.day:nth-child(7n + 1) {
+  color: red;
+}
+
+.month .day.day-title {
+  font-size: 25px;
+  font-weight: bold;
+  color: navy;
+}
+
+.month-page .day {
+  font-size: 30px; 
+}
+
+.month-page .month-title {
+  font-size: 60px;
+}
+
+.day.today {
+  background-color: cadetblue;
+  color: maroon;
+  border-radius: 50%; 
+}
+
+.day:nth-child(7n).today,
+.day:nth-child(7n + 1).today {
+  background-color: cadetblue;
+  color: maroon;
+  
+}
+
+.today-day {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 100px;
+}

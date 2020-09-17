@@ -1,6 +1,6 @@
 .month {  
   width: 350px;
-  margin: 10px;
+  margin: 10px auto;
   text-align: center;   
 }
 
@@ -10,7 +10,16 @@
   font-size: 40px;
   text-transform: uppercase;
   padding: 30px;
+  
+}
+
+.month-title > a {
+  text-decoration: none;
   color: saddlebrown;
+}
+
+.month-title > a:hover {
+  color: white;
 }
 
 .days {
@@ -18,19 +27,20 @@
   flex-wrap: wrap;
 }
 
-.day {
-  width: calc(100% / 7);
-  text-align: center;
-  font-size: 28px;
+.month-page > .month {
+  width: 700px;
 }
 
-.day:nth-child(7n),
-.day:nth-child(7n + 1) {
-  color: red;
+.month-page > .month .month-title {
+  margin-top: 80px;
 }
 
-.month .day.day-title {
-  font-size: 25px;
-  font-weight: bold;
-  color: navy;
+.month-page > .month .day {
+  font-size: 39px; 
+  padding: 10px 0;   
+}
+
+.month-page > .month .day.day-title {
+  font-size: 40px; 
+    
 }
