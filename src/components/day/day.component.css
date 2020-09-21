@@ -2,6 +2,8 @@
   width: calc(100% / 7);
   text-align: center;
   font-size: 28px;
+  text-decoration: none;
+  color: black;
 }
 
 .day:nth-child(7n),
@@ -23,7 +25,7 @@
   font-size: 60px;
 }
 
-.day.today {
+.today {
   background-color: cadetblue;
   color: maroon;
   border-radius: 50%; 

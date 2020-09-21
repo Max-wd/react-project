@@ -6,11 +6,21 @@ import {
   Redirect,
   Switch
 } from "react-router-dom";
+import { todoService } from './services/todo.secrvice';
+
 
 import './App.css';
 
+
 export default class App extends Component {
-  render() {
+
+
+  state = {
+    todos: todoService.load(),
+  }
+  
+  render() { 
+
     return (
       <Router>
         <NavBar/>
@@ -41,19 +51,17 @@ export default class App extends Component {
 
         <Route path='/year/:year/month/:month/day/:day' exact render={({ match }) => {
             return (
-              <div className="day-page">
-                <DayPage startDate={new Date(
-                  Number(match.params.year),
-                  Number(match.params.month) - 1,
-                  Number(match.params.day))
-                }/>
-              </div>
+              <DayPage startDate={new Date(
+                Number(match.params.year), 
+                Number(match.params.month) - 1,
+                Number(match.params.day)
+              )}/>
             )
           }}/>
 
           <Route path="/year/:year" exact render={({ match }) => {
             return (
-              <YearPage year={ match.params.year }/>
+              <YearPage year={ match.params.year } todos={ this.state.todos }/>
             )
           }}/>  
 
