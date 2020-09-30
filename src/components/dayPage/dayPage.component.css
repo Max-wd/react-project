@@ -16,3 +16,8 @@
   text-align: center; 
   font-size: 30px;
 }
+
+.todo-item { 
+  border: 1px solid white;
+  font-size: 25px;
+}

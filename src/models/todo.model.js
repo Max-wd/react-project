@@ -1,9 +1,9 @@
 export default class Todo {
-  title = 'No title';
+  title = '';
   description = '';
-  createdAt = (new Date()).toISOString();
-  activeAt = '';
+  createdAt = (new Date()).toISOString();  
   state = 'created';
+  id = Math.random().toString(16).substring(2, 10);
 
 
   constructor(options) {

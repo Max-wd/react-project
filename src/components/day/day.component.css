@@ -43,3 +43,8 @@
   text-align: center;
   margin-top: 100px;
 }
+
+.day.has-todos {
+  background-color: red;
+  border-radius: 50%;
+}

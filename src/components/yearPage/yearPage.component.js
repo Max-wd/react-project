@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { Month } from '..';
 import { Link } from 'react-router-dom';
+import { get } from 'lodash';
 
 import './yearPage.component.css';
 
 export default class YearPageComponent extends Component {
 
-  render() {
-    console.log('Year page render', this.props.todos);
-    
-    const months = Array(12).fill(null).map((x, index) => new Date(this.props.year, index, 1));
+  render() {     
+    const months = Array(12).fill(null).map((x, index) => index + 1);
   
     return (
       <div className="calendar">
         <div className="year"> 
-          <Link to={`/year/${this.props.year - 1}`}>
+          <Link to={`/year/${this.props.year - 1}`}> 
             <button className="btn-left" type="button">{'<'}</button> 
           </Link>
           { this.props.year }
@@ -24,8 +23,13 @@ export default class YearPageComponent extends Component {
         </div>
 
         <div className="months">
-          { months.map((startDate, index) => (
-            <Month key={index} startDate={startDate} todos={this.props.todos}/>
+          { months.map(month => (
+            <Month 
+              key={month} 
+              year={this.props.year}
+              month={month}
+              todos={get(this.props.todos, month, {})}
+            />
           ))}
         </div>
       </div>
