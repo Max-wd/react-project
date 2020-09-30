@@ -5,10 +5,17 @@
   max-width: 450px;
 }
 
-.day-page > form > input {
+input {  
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #055458;
   margin-bottom: 30px;
-  font-size: 30px;
-  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #055458;
+  outline: none;
+  background: transparent;
+  font-size: 25px;
 }
 
 .day-page-title {
@@ -18,6 +25,77 @@
 }
 
 .todo-item { 
-  border: 1px solid white;
+  border: 2px solid #055458;
+  border-radius: 10px;
   font-size: 25px;
+  margin-bottom: 10px;
+  min-height: 30px;
+  padding: 5px;
 }
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+input[type=submit] {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #055458;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden; 
+  width: 200px;
+  margin-top: 20px;  
+  margin-bottom: 20px;
+  border: 2px solid #055458;
+  border-radius: 10px;
+}
+
+input[type=submit]:hover {
+  background: #055458;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #055458,
+              0 0 25px #055458,
+              0 0 10px #055458,
+              0 0 10px #055458;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons > button { 
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: red;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden; 
+  width: 200px;
+  margin: 0;  
+  border: 2px solid red;
+  border-radius: 10px;
+}
+
+.buttons > button:hover {
+  background: red;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px red,
+              0 0 25px red,
+              0 0 10px red,
+              0 0 10px red;
+}
+
+

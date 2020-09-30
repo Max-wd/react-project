@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { startCase, find, pick } from 'lodash';
-
-import './dayPage.component.css';
 import Todo from '../../models/todo.model';
 import { todoService } from '../../services/todo.service';
+
+import './dayPage.component.css';
 
 export default class DayPageComponent extends Component {
 
@@ -59,6 +59,15 @@ export default class DayPageComponent extends Component {
     });
   }
 
+  handleDeleteButtonClick = (event) => {
+    event.preventDefault();
+    todoService.deleteTodo(pick(this.props, ['year', 'month', 'day']), this.state.currentTodo);
+    this.setState({
+      currentTodo: null,
+      isFormVisible: false,
+    });
+  } 
+
   render() {
     const { year, month, day } = this.props;
     const today = new Date(year, month - 1, day);
@@ -70,21 +79,22 @@ export default class DayPageComponent extends Component {
 
         { this.props.todos.map(todo => (
           <div 
-            key={todo.id} 
+            key={ todo.id } 
             className="todo-item" 
-            onClick={this.handleTodoClick}
-            data-id={todo.id}
+            onClick={ this.handleTodoClick }
+            data-id={ todo.id }
           >
-            <div>{todo.title}</div>
-            <div>{todo.description}</div>
+            <div>{ todo.title }</div>
+            <div>{ todo.description }</div>
           </div>
         ))}
         
-        {this.state.isFormVisible ? 
+        { this.state.isFormVisible ? 
           <form onSubmit={ this.handleSubmit } >
             <input 
             type="text" 
-            name="title" 
+            name="title"
+            placeholder='TITLE' 
             value={this.state.currentTodo.title}
             onChange={ this.handleTitleChange } 
             />
@@ -92,12 +102,16 @@ export default class DayPageComponent extends Component {
             <input 
             type="text" 
             name="description"
+            placeholder='DESCRIPTION'
             value={ this.state.currentTodo.description } 
             onChange={ this.handleDescriptionChange }
             />
-
-            <input type="submit" value="Submit" />
-          </form> : <button onClick={this.handleAddButtonClick}>Add</button>}
+            <div className="buttons">
+              <input type="submit" value="Submit" />
+              <button onClick={ this.handleDeleteButtonClick }>delete</button> 
+            </div>
+                          
+          </form> : <button onClick={ this.handleAddButtonClick }>Add</button>  }
       </div>
     )
   }

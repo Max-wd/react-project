@@ -16,7 +16,7 @@ export default class YearPageComponent extends Component {
           <Link to={`/year/${this.props.year - 1}`}> 
             <button className="btn-left" type="button">{'<'}</button> 
           </Link>
-          { this.props.year }
+            { this.props.year }
           <Link to={`/year/${Number(this.props.year) + 1}`}>
             <button className="btn-right" type="button">{'>'}</button> 
           </Link>
@@ -25,12 +25,12 @@ export default class YearPageComponent extends Component {
         <div className="months">
           { months.map(month => (
             <Month 
-              key={month} 
-              year={this.props.year}
-              month={month}
-              todos={get(this.props.todos, month, {})}
+              key={ month } 
+              year={ this.props.year }
+              month={ month }
+              todos={ get(this.props.todos, month, {}) }
             />
-          ))}
+          )) }
         </div>
       </div>
     );

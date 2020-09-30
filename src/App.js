@@ -32,7 +32,6 @@ export default class App extends Component {
   }
 
   render() { 
-
     const { todos } = this.state;
 
     return (
@@ -48,7 +47,7 @@ export default class App extends Component {
           <Route path="/year/current" exact render={() => {
             const today = new Date();
             const redirectPath = `/year/${today.getFullYear()}`;
-            return (<Redirect to={ redirectPath } />);
+            return (<Redirect to={ redirectPath }/>);
           }} />
 
           <Route path="/year/current/month/current" exact render={() => {
@@ -69,14 +68,17 @@ export default class App extends Component {
                 year={ Number(match.params.year) } 
                 month={ Number(match.params.month) }
                 day={ Number(match.params.day) }   
-                todos={ get(todos, [match.params.year, match.params.month, match.params.day], [])}             
+                todos={ get(todos, [match.params.year, match.params.month, match.params.day], []) }             
               />
             )
           }}/>
 
           <Route path="/year/:year" exact render={({ match }) => {
             return (
-              <YearPage year={ Number(match.params.year) } todos={ get(todos, match.params.year, {}) }/>
+              <YearPage 
+                year={ Number(match.params.year) } 
+                todos={ get(todos, match.params.year, {}) }
+              />
             )
           }}/>  
 
@@ -86,7 +88,7 @@ export default class App extends Component {
                 <Month 
                   year={ Number(match.params.year) } 
                   month={ Number(match.params.month) }
-                  todos={ get(todos, [match.params.year, match.params.month], {})}
+                  todos={ get(todos, [match.params.year, match.params.month], {}) }
                 />
               </div>
             )

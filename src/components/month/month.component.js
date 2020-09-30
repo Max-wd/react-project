@@ -45,7 +45,7 @@ export default class MonthComponent extends Component {
             day={day} 
             year={this.props.year} 
             month={this.props.month} 
-            todos={get(this.props.todos, day, [])} 
+            todos={get(this.props.todos, [day], [])} 
           />) }
         </div>
       </div>

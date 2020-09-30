@@ -3,9 +3,7 @@ import { get, findIndex } from 'lodash';
 
 const TODO_LOCAL_STORAGE_KEY = 'TODO_LOCAL_STORAGE_KEY';  
 
-class TodoService extends EventTarget{ 
-
-  /**@type {Todo[]} */
+class TodoService extends EventTarget{   
   todos = {}
 
   constructor() {
@@ -43,6 +41,25 @@ class TodoService extends EventTarget{
     this._saveToLocalStorage();
   }
 
+  deleteTodo({ year, month, day }, todo) {
+    const dayTodos = Array.from(get(this.todos, [year, month, day], []));
+    const todoIndex = findIndex(dayTodos, {id: todo.id});
+    dayTodos.splice(todoIndex, 1);
+    
+    this.todos = {
+      ...this.todos,
+      [year]: {
+        ...get(this.todos, [year], {}),
+        [month]: {
+          ...get(this.todos, [year, month], {}),
+          [day]: dayTodos,
+        }
+      }
+    }
+    this.save();
+    this.dispatchUpdate();
+  }
+
   upsertTodo({ year, month ,day }, todo) {
     const dayTodos = Array.from(get(this.todos, [year, month, day], []));
     const todoIndex = findIndex(dayTodos, {id: todo.id});
@@ -52,7 +69,6 @@ class TodoService extends EventTarget{
     } else {
       dayTodos.push(todo);
     }
-
 
     this.todos = {
       ...this.todos,

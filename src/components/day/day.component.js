@@ -6,9 +6,10 @@ import { isEmpty } from 'lodash';
 import './day.component.css';
 
 export default class DayComponent extends Component {
+
   render() {
     const { year, month, day } = this.props;
-    const today = new Date(year, day);   
+    const today = new Date(year, month - 1, day);
     const isToday = (new Date().toDateString() === today.toDateString());
 
     if (!day) { 
@@ -18,9 +19,9 @@ export default class DayComponent extends Component {
     return (
       <Link 
         to={ `/year/${year}/month/${month}/day/${day}` } 
-        className={ classnames({ day: true, 'has-todos': !isEmpty(this.props.todos)}) }>
-        <div className={ classnames({ today: isToday}) }>
-          {day || null}  
+        className={ classnames({ day: true, today: isToday, 'has-todos': !isEmpty(this.props.todos)}) }>
+        <div>
+          { day || null }  
         </div>
       </Link>
     )
